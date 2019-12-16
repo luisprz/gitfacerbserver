@@ -74,7 +74,7 @@ const app = express();
 app.use(cors())
 app.use(bodyParser.json());
 
-app.get('/', (req, res) => { res.send(database.users) })
+app.get('/', (req, res) => { res.send('it is working!') })
 
 //We're not gonna necessarily just say sign in and that's it. We want to check whatever the user enters on the front end it's going to come back here in the response or in the request and we want to check it with our current list of users to make sure that their passwords match so it sounds like we need some sort of a database
 //Error people always forget. When we are sending data from the front end and is using json, well we need to parse it. because express doesnt know what we just send over. and to be able to request that body we need to body parserRR!!!
@@ -122,8 +122,8 @@ app.post('/imageUrl', (req, res) => { image.handleApiCall(req, res) })
 // });
 
 
-app.listen(3001, () => {
-    console.log('app is running on port 3001');
+app.listen(process.env.PORT || 3001, () => {
+    console.log('app is running on port ${process.env.PORT}');
 })
 
 
